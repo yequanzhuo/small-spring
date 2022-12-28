@@ -15,6 +15,7 @@ public abstract class AbstractAutowireCapableBeanFactory extends AbstractBeanFac
         Object bean;
         try {
             // 【优化】用户自行实例化行为
+            // 【存在一个问题】实例化方式并没有考虑构造函数的入参
             bean = beanDefinition.getBeanClass().newInstance();
         } catch (InstantiationException | IllegalAccessException e) {
             throw new BeansException("Instantiation of bean failed", e);
